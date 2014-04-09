@@ -1,0 +1,16 @@
+{
+  "name": "project-runner",
+  "main": "./lib/project-runner",
+  "version": "0.0.1",
+  "description": "Run project's code in Atom.",
+  "activationEvents": ["project-runner:run", "project-runner:test", "project-runner:close"],
+  "repository": "https://github.com/hirohisa/atom-project-runner",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "shelljs": "^0.2.6",
+    "ansi-to-html": "0.1.x"
+  }
+}

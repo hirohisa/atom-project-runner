@@ -1,0 +1,18 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable project-runner': 'project-runner:run'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Project Runner'
+      'submenu': [
+        { 'label': 'Run', 'command': 'project-runner:run' },
+        { 'label': 'Test', 'command': 'project-runner:test' },
+        { 'label': 'Close', 'command': 'project-runner:close' }
+      ]
+    ]
+  }
+]
