@@ -9,7 +9,6 @@ class ProjectRunnerView extends View
       @pre class: 'stacktrace', outlet: 'output'
 
   initialize: ->
-    @AnsiFilter = new AnsiFilter
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->
@@ -20,11 +19,26 @@ class ProjectRunnerView extends View
   show: (state, stacktrace='')->
     if not @hasParent()
       atom.workspaceView.prependToBottom(this)
+
     @refresh()
 
-    line = @AnsiFilter.toHtml(stacktrace)
+    status     = if state == true then '✓ succeeded' else '× failed'
+    className  = if state == true then 'stdout' else 'stderr'
 
-    @output.append("<pre class='stacktrace'>#{line}</pre>")
+    pre = document.createElement('pre')
+    pre.className = className
+    node = document.createTextNode(stacktrace)
+    pre.appendChild(node)
+
+    pre.innerHTML = new AnsiFilter().toHtml(pre.innerHTML)
+    @output.append(pre)
+
+    result = document.createElement('span')
+    result.className = className
+    node = document.createTextNode(status)
+    result.appendChild(node)
+
+    pre.appendChild(result)
 
   close: ->
     if @hasParent()

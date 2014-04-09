@@ -5,12 +5,21 @@
 @import "ui-variables";
 
 .project-runner {
-  background: #fff;
-  padding: 0px 20px;
-  padding-bottom: 20px;
   overflow-y: scroll;
   height: 300px;
 
   .stacktrace {
+  }
+
+  pre {
+    background-color: #f0f0f0;
+    font-size: 12px;
+    .stderr {
+      color: red;
+    }
+
+    span.stdout {
+      color: green;
+    }
   }
 }

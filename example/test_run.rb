@@ -1,3 +1,3 @@
 100.times {
-  puts 'Hellow world!'
+  puts '<i>Hellow world!</i>'
 }

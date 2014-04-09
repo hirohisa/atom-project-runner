@@ -1,15 +1,20 @@
 atom-project-runner
 ==================
 
-Run with project's makefile in Atom.
+Run project's code in Atom.
 
 
 Commands
 -------
 
-- `⌘-r` to make run
-- `⌘-u` to make test
-- `ctrl-c` to close output's window
+- `⌘-r`
+ - Make run, if shows result then hide.
+
+- `⌘-u`
+ - Make test and control to toggle
+
+- `ctrl-c`
+ - Close output's window
 
 Installation
 -------
@@ -37,8 +42,3 @@ run:
 test:
   ruby example/test_test.rb
 ```
-
-TODO
---------
-
-- update view for script's result

@@ -24,19 +24,19 @@ class ProjectRunner
     @runnerView.destroy()
 
   run: (script) ->
+    if @runnerView.hasParent()
+      @close()
+      return
+
     @execute(script)
 
   close: ->
-    @runnerView.close();
+    @runnerView.close()
 
   execute: (cmd) ->
     shell.cd atom.project.path
     shell.exec cmd, (code, output) =>
-      if code is 0
-        @runnerView.show('succeeded', output)
-        @runnerView.scrollToBottom()
-      else
-        @runnerView.show('build success:', code)
-        @runnerView.scrollToBottom()
+      @runnerView.show(code is 0, output)
+      @runnerView.scrollToBottom()
 
 module.exports = new ProjectRunner
