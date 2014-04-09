@@ -12,13 +12,12 @@ class ProjectRunner
       config_path = atom.project.path + '/Makefile'
       file = fs.readFileSync(config_path, 'UTF8')
     catch e
-      @runnerView.show('no such file: ' + config_path)
+      @runnerView.show(false, 'no such file: ' + config_path)
       console.log('no such file: ' + config_path);
       return
 
     atom.workspaceView.command 'project-runner:run', => @run('make run')
     atom.workspaceView.command 'project-runner:test', => @run('make test')
-    atom.workspaceView.command 'project-runner:close', => @close()
 
   deactivate: ->
     @runnerView.destroy()

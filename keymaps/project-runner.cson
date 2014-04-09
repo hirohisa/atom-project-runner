@@ -10,4 +10,3 @@
 '.platform-darwin .workspace .editor':
   'cmd-r': 'project-runner:run'
   'cmd-u': 'project-runner:test'
-  'ctrl-c': 'project-runner:close'

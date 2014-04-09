@@ -10,8 +10,7 @@
       'label': 'Project Runner'
       'submenu': [
         { 'label': 'Run', 'command': 'project-runner:run' },
-        { 'label': 'Test', 'command': 'project-runner:test' },
-        { 'label': 'Close', 'command': 'project-runner:close' }
+        { 'label': 'Test', 'command': 'project-runner:test' }
       ]
     ]
   }

@@ -22,16 +22,17 @@ class ProjectRunnerView extends View
 
     @refresh()
 
-    status     = if state == true then '✓ succeeded' else '× failed'
-    className  = if state == true then 'stdout' else 'stderr'
-
+    # stacktrace
     pre = document.createElement('pre')
-    pre.className = className
     node = document.createTextNode(stacktrace)
     pre.appendChild(node)
 
     pre.innerHTML = new AnsiFilter().toHtml(pre.innerHTML)
     @output.append(pre)
+
+    # result
+    status     = if state == true then '✓ succeeded' else '× failed'
+    className  = if state == true then 'stdout' else 'stderr'
 
     result = document.createElement('span')
     result.className = className
