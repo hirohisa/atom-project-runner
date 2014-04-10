@@ -3,21 +3,39 @@ shell = require 'shelljs'
 
 fs = require('fs')
 
+class ProjectRunnerBuildr
+
+  constructor: ->
+    shell.cd atom.project.path
+
+  command:(state) ->
+    for file in shell.ls '*file'#|config.*
+      if file is 'Makefile'
+        return @make(state)
+      if file is 'Rakefile'
+        return @rake(state)
+
+  make:(state) ->
+    if state is 'run'
+      return 'make run'
+    return 'make test'
+
+  rake:(state) ->
+    if state is 'run'
+      return 'rake run'
+    return 'rake test --trace'
+
 class ProjectRunner
-  runnerView: null
+
+  constructor: ->
+    @runnerView = new ProjectRunnerView()
+    @projectRunnerBuildr = new ProjectRunnerBuildr
 
   activate: ->
-    @runnerView = new ProjectRunnerView()
-    try
-      config_path = atom.project.path + '/Makefile'
-      file = fs.readFileSync(config_path, 'UTF8')
-    catch e
-      @runnerView.show(false, 'no such file: ' + config_path)
-      console.log('no such file: ' + config_path);
-      return
-
-    atom.workspaceView.command 'project-runner:run', => @run('make run')
-    atom.workspaceView.command 'project-runner:test', => @run('make test')
+    atom.workspaceView.command 'project-runner:run',
+      => @run( @projectRunnerBuildr.command('run') )
+    atom.workspaceView.command 'project-runner:test',
+      => @run( @projectRunnerBuildr.command('test') )
 
   deactivate: ->
     @runnerView.destroy()
@@ -25,6 +43,10 @@ class ProjectRunner
   run: (script) ->
     if @runnerView.hasParent()
       @close()
+      return
+
+    if script is undefined
+      @runnerView.show(false, 'no such file: Makefile or Rakefile\n')
       return
 
     @execute(script)

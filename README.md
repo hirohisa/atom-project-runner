@@ -7,10 +7,10 @@ Commands
 -------
 
 - `⌘-r`
- - Make run, if shows result then hide.
+ - to run with configuration file for building, if shows result then hide.
 
 - `⌘-u`
- - Make test, if shows result then hide.
+ - to test with configuration file for building , if shows result then hide.
 
 
 ![screenshot success](https://raw.github.com/hirohisa/atom-project-runner/master/example/screenshot_success.png "Screenshot")
@@ -27,23 +27,34 @@ apm install project-runner
 Setup
 -------
 
-Make configuration file `Makefile`.
+Make configuration file `Makefile` or `Rakefile`.
 Set the file to directory on project's root path.
 
-#### ⌘-r
+### Makefile
 ```yml
+
 run:
   ruby example/test_run.rb
-```
-
-#### ⌘-u
-```yml
 test:
   ruby example/test_test.rb
+
+```
+
+#### Rakefile
+```ruby
+
+task :run do
+  ruby "example/test_run.rb"
+end
+
+task :test do
+  ruby "example/test_test.rb"
+end
+
 ```
 
 TODO
 --------
 
 - make run then auto save
-- support other files, Rakefile...
+- support other files for building
