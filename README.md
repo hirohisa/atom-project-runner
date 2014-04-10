@@ -40,7 +40,7 @@ test:
 
 ```
 
-#### Rakefile
+### Rakefile
 ```ruby
 
 task :run do
