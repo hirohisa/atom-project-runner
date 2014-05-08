@@ -50,7 +50,7 @@ class ProjectRunner
       @runnerView.show(false, 'no such file: Makefile or Rakefile\n')
       return
 
-    environmentVariables = JSON.parse(atom.config.get("project-runner.environmentVariables"))
+    environmentVariables = JSON.parse('{"env":['+atom.config.get("project-runner.environmentVariables")+"]}")
     for variable in environmentVariables.env
       variableSplit = variable.split('=')
       name = variableSplit[0]
