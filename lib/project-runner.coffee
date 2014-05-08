@@ -7,6 +7,7 @@ class ProjectRunnerBuildr
 
   constructor: ->
     shell.cd atom.project.path
+    atom.config.setDefaults('project-runner', environmentVariables:'')
 
   command:(state) ->
     for file in shell.ls '*file'#|config.*
@@ -48,6 +49,13 @@ class ProjectRunner
     if script is undefined
       @runnerView.show(false, 'no such file: Makefile or Rakefile\n')
       return
+
+    environmentVariables = JSON.parse(atom.config.get("project-runner.environmentVariables"))
+    for variable in environmentVariables.env
+      variableSplit = variable.split('=')
+      name = variableSplit[0]
+      value = variableSplit[1]
+      shell.env[name] = value
 
     @execute(script)
 
