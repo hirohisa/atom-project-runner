@@ -7,6 +7,9 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
+'.platform-win32 .workspace .editor, .platform-linux .workspace .editor':
+  'ctrl-r': 'project-runner:run'
+  'ctrl-u': 'project-runner:test'
 '.platform-darwin .workspace .editor':
   'cmd-r': 'project-runner:run'
   'cmd-u': 'project-runner:test'
