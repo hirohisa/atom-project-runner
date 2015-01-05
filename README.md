@@ -6,12 +6,13 @@ Run project's code in Atom.
 Commands
 -------
 
-- `⌘-r`
- - to run with configuration file for building, if shows result then hide.
+- to run with configuration file for building, if shows result then hide.
+ - `⌘-r` OSX
+ - `ctrl-r` win32, Linux
 
-- `⌘-u`
- - to test with configuration file for building , if shows result then hide.
-
+- to test with configuration file for building , if shows result then hide.
+ - `⌘-u` OSX
+ - `ctrl-u` win32, Linux
 
 ![screenshot success](https://raw.github.com/hirohisa/atom-project-runner/master/example/screenshot_success.png "Screenshot")
 ![screenshot fail](https://raw.github.com/hirohisa/atom-project-runner/master/example/screenshot_fail.png "Screenshot")
