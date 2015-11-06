@@ -1,6 +1,8 @@
 atom-project-runner
 ==================
 
+stop development.
+
 Run project's code in Atom.
 
 Commands
