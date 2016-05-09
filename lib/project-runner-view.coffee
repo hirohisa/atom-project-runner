@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{View} = require 'atom-space-pen-views'
 AnsiFilter = require 'ansi-to-html'
 
 module.exports =
@@ -18,7 +18,7 @@ class ProjectRunnerView extends View
 
   show: (state, stacktrace='')->
     if not @hasParent()
-      atom.workspaceView.prependToBottom(this)
+      atom.workspace.addBottomPanel(item: this)
 
     @refresh()
 
