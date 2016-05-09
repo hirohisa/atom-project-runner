@@ -8,7 +8,7 @@ class ProjectRunnerBuildr
     atom.config.setDefaults('project-runner', environmentVariables:'')
 
   command:(state) ->
-    for file in shell.ls '*file'#|config.*
+    for file in shell.ls '*file'
       if file is 'Makefile'
         return @make(state)
       if file is 'Rakefile'
@@ -16,12 +16,12 @@ class ProjectRunnerBuildr
 
   make:(state) ->
     if state is 'run'
-      return 'make run'
+      return 'make'
     return 'make test'
 
   rake:(state) ->
     if state is 'run'
-      return 'rake run'
+      return 'rake'
     return 'rake test --trace'
 
 class ProjectRunner

@@ -1,4 +1,4 @@
-run:
+all:
 	ruby example/test_run.rb
 
 test:

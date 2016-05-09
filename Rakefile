@@ -1,4 +1,4 @@
-task :run do
+task :default do
   ruby "example/test_run.rb"
 end
 
