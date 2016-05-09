@@ -4,7 +4,7 @@ shell = require 'shelljs'
 class ProjectRunnerBuildr
 
   constructor: ->
-    shell.cd atom.project.path
+    shell.cd atom.project.getPaths()[0]
     atom.config.setDefaults('project-runner', environmentVariables:'')
 
   command:(state) ->
