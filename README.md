@@ -34,7 +34,7 @@ Set the file to directory on project's root path.
 ### Makefile
 ```yml
 
-run:
+all:
   ruby example/test_run.rb
 test:
   ruby example/test_test.rb
@@ -44,7 +44,7 @@ test:
 ### Rakefile
 ```ruby
 
-task :run do
+task :default do
   ruby "example/test_run.rb"
 end
 
