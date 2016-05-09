@@ -1,8 +1,6 @@
 ProjectRunnerView = require './project-runner-view'
 shell = require 'shelljs'
 
-fs = require('fs')
-
 class ProjectRunnerBuildr
 
   constructor: ->
@@ -33,9 +31,9 @@ class ProjectRunner
     @projectRunnerBuildr = new ProjectRunnerBuildr
 
   activate: ->
-    atom.workspaceView.command 'project-runner:run',
+    atom.commands.add 'atom-workspace', 'project-runner:run',
       => @run( @projectRunnerBuildr.command('run') )
-    atom.workspaceView.command 'project-runner:test',
+    atom.commands.add 'atom-workspace', 'project-runner:test',
       => @run( @projectRunnerBuildr.command('test') )
 
   deactivate: ->

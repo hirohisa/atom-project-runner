@@ -7,10 +7,11 @@
   "repository": "https://github.com/hirohisa/atom-project-runner",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "shelljs": "^0.2.6",
+    "atom-space-pen-views": "^2.0.3",
     "ansi-to-html": "0.1.x"
   }
 }
