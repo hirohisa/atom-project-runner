@@ -3,6 +3,8 @@ atom-project-runner
 
 Run project's code in Atom.
 
+[![Build Status](https://travis-ci.org/hirohisa/atom-project-runner.svg?branch=master)](https://travis-ci.org/hirohisa/atom-project-runner)
+
 Commands
 -------
 
