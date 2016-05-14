@@ -7,11 +7,13 @@ import { Rake } from '../lib/project-runner-command';
 describe('ProjectRunnerScripter', () => {
   describe('when scripter initialize', () => {
 
+    workspace = () => {
+      return __dirname.substring(0, __dirname.lastIndexOf('/')); // project runner's directory
+    }
+
     it('sets default path to project directory', () => {
-      scripter = new ProjectRunnerScripter();
-      direname = __dirname;
-      valid = direname.substring(0, direname.lastIndexOf('/')); // current directory - '/spec'
-      expect(scripter.cwd).toBe(valid);
+      scripter = new ProjectRunnerScripter(workspace());
+      expect(scripter.cwd).toBeDefined();
     });
 
     it('sets argument `path`', () => {
@@ -21,7 +23,7 @@ describe('ProjectRunnerScripter', () => {
     });
 
     it('finds Raikefile and ensures command with `run`', () => {
-      scripter = new ProjectRunnerScripter();
+      scripter = new ProjectRunnerScripter(workspace());
       scripter.ensure('run', function(cmd) {
         expect(cmd.exec).toEqual('rake');
         expect(cmd.args).toEqual([]);
@@ -29,7 +31,7 @@ describe('ProjectRunnerScripter', () => {
     });
 
     it('finds Raikefile and ensures command with `test`', () => {
-      scripter = new ProjectRunnerScripter();
+      scripter = new ProjectRunnerScripter(workspace());
       scripter.ensure('test', function(cmd) {
         expect(cmd.exec).toEqual('rake');
         expect(cmd.args).toEqual(['test', '--trace']);
@@ -44,19 +46,19 @@ describe('ProjectRunnerScripter', () => {
     });
 
     it('finds Rakefile in project root path', () => {
-      scripter = new ProjectRunnerScripter();
+      scripter = new ProjectRunnerScripter(workspace());
       scripter.outputView = new ProjectRunnerView();
       expect(scripter.outputView).toBeDefined();
     });
 
     it('sets outputView', () => {
-      scripter = new ProjectRunnerScripter();
+      scripter = new ProjectRunnerScripter(workspace());
       scripter.outputView = new ProjectRunnerView();
       expect(scripter.outputView).toBeDefined();
     });
 
     it('runs with rake then process exists', () => {
-      scripter = new ProjectRunnerScripter();
+      scripter = new ProjectRunnerScripter(workspace());
       rake = new Rake('run');
       scripter.runCommand(rake);
       scripter.outputView = new ProjectRunnerView();
