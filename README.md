@@ -3,6 +3,7 @@ atom-project-runner
 
 Run project's code in Atom.
 
+[![Package version](https://img.shields.io/apm/v/project-runner.svg)](https://atom.io/packages/project-runner)
 [![Build Status](https://travis-ci.org/hirohisa/atom-project-runner.svg?branch=master)](https://travis-ci.org/hirohisa/atom-project-runner)
 
 Commands
