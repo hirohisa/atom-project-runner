@@ -55,9 +55,3 @@ task :test do
 end
 
 ```
-
-TODO
---------
-
-- make run then auto save
-- support other files for building
